@@ -3,7 +3,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Ghost, PartyPopper, Angry, Snail, Smile } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Client } from "@/types";
 
@@ -103,7 +102,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                 }}
               >
                 <div className="space-y-2">
-                  <Ghost className="h-8 w-8 mx-auto" />
+                  <span className="text-4xl">👻</span>
                   <span>No</span>
                 </div>
               </Button>
@@ -116,7 +115,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                 }}
               >
                 <div className="space-y-2">
-                  <PartyPopper className="h-8 w-8 mx-auto" />
+                  <span className="text-4xl">🎉</span>
                   <span>Sì</span>
                 </div>
               </Button>
@@ -134,7 +133,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                 }}
               >
                 <div className="space-y-2">
-                  <Angry className="h-8 w-8 mx-auto" />
+                  <span className="text-4xl">😠</span>
                   <span>No</span>
                 </div>
               </Button>
@@ -147,7 +146,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                 }}
               >
                 <div className="space-y-2">
-                  <Snail className="h-8 w-8 mx-auto" />
+                  <span className="text-4xl">🐌</span>
                   <span>Oltre 30 giorni</span>
                 </div>
               </Button>
@@ -160,7 +159,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                 }}
               >
                 <div className="space-y-2">
-                  <Smile className="h-8 w-8 mx-auto" />
+                  <span className="text-4xl">😊</span>
                   <span>Sì</span>
                 </div>
               </Button>

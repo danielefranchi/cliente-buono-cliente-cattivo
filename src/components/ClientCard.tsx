@@ -1,4 +1,3 @@
-import { Building, Ghost, PartyPopper, Angry, Snail, Smile } from "lucide-react";
 import { Client } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
@@ -20,7 +19,7 @@ export const ClientCard = ({ client, onRate }: ClientCardProps) => {
   return (
     <Card className="w-full">
       <CardHeader className="flex flex-row items-center gap-2">
-        <Building className="h-8 w-8 text-gray-400" />
+        <span className="text-2xl">🏢</span>
         <div>
           <h3 className="font-semibold">{client.name}</h3>
           <p className="text-sm text-gray-500">{ratings.length} valutazioni</p>
@@ -31,8 +30,8 @@ export const ClientCard = ({ client, onRate }: ClientCardProps) => {
           <div className="flex justify-between text-sm">
             <span>Risponde ai preventivi?</span>
             <div className="flex gap-2">
-              <Ghost className="h-4 w-4" />
-              <PartyPopper className="h-4 w-4" />
+              <span>👻</span>
+              <span>🎉</span>
             </div>
           </div>
           <div className="rating-bar">
@@ -46,9 +45,9 @@ export const ClientCard = ({ client, onRate }: ClientCardProps) => {
           <div className="flex justify-between text-sm">
             <span>Paga?</span>
             <div className="flex gap-2">
-              <Angry className="h-4 w-4" />
-              <Snail className="h-4 w-4" />
-              <Smile className="h-4 w-4" />
+              <span>😠</span>
+              <span>🐌</span>
+              <span>😊</span>
             </div>
           </div>
           <div className="rating-bar">

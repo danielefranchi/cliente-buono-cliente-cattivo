@@ -79,7 +79,7 @@ const Index = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-semibold mb-4 text-center">
               ✨ Migliori clienti ✨
             </h2>
             <div className="space-y-4">
@@ -93,7 +93,7 @@ const Index = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-semibold mb-4 text-center">
               🚫 Evitali 🚫
             </h2>
             <div className="space-y-4">
