@@ -1,4 +1,4 @@
-import { Building, Ghost, PartyPopper, Angry, Snail, MoneyMouthFace } from "lucide-react";
+import { Building, Ghost, PartyPopper, Angry, Snail, Smile } from "lucide-react";
 import { Client } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
@@ -48,7 +48,7 @@ export const ClientCard = ({ client, onRate }: ClientCardProps) => {
             <div className="flex gap-2">
               <Angry className="h-4 w-4" />
               <Snail className="h-4 w-4" />
-              <MoneyMouthFace className="h-4 w-4" />
+              <Smile className="h-4 w-4" />
             </div>
           </div>
           <div className="rating-bar">

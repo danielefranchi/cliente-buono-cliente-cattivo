@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Ghost, PartyPopper, Angry, Snail, MoneyMouthFace } from "lucide-react";
+import { Ghost, PartyPopper, Angry, Snail, Smile } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Client } from "@/types";
 
@@ -160,7 +160,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                 }}
               >
                 <div className="space-y-2">
-                  <MoneyMouthFace className="h-8 w-8 mx-auto" />
+                  <Smile className="h-8 w-8 mx-auto" />
                   <span>Sì</span>
                 </div>
               </Button>

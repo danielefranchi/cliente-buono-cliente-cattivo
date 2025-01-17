@@ -4,6 +4,7 @@ import { ClientCard } from "@/components/ClientCard";
 import { RatingDialog } from "@/components/RatingDialog";
 import { useClientStore } from "@/lib/store";
 import { Client } from "@/types";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const [search, setSearch] = useState("");
