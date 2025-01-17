@@ -69,10 +69,15 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="text-center">
-          <h1 className="text-3xl font-bold mb-2">
+          <img 
+            src="/lovable-uploads/8bfc7c19-178d-4260-a16b-483a85ba69e1.png" 
+            alt="Cliente buono/cattivo" 
+            className="h-24 mx-auto mb-6"
+          />
+          <h1 className="text-4xl font-bold mb-2 font-sans">
             Scopri se un cliente risponde al tuo preventivo
           </h1>
-          <p className="text-gray-600 mb-8">e se paga davvero.</p>
+          <p className="text-gray-600 mb-8 text-xl font-sans">e se paga davvero.</p>
           <SearchBar value={search} onChange={setSearch} />
         </div>
 
@@ -82,40 +87,44 @@ const Index = () => {
               {search} non è valutato!
             </h2>
             <p className="text-gray-600 mb-4">Bisogna aggiungerlo!</p>
-            <Button onClick={() => handleOpenDialog()}>Aggiungi cliente</Button>
+            <Button onClick={() => handleOpenDialog()} className="bg-black hover:bg-black/90">
+              Aggiungi cliente
+            </Button>
           </div>
         )}
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h2 className="text-xl font-semibold mb-4 text-center">
-              ✨ Migliori clienti ✨
-            </h2>
-            <div className="space-y-4">
-              {goodClients.map((client) => (
-                <ClientCard
-                  key={client.id}
-                  client={client}
-                  onRate={() => handleOpenDialog(client)}
-                />
-              ))}
+        {!search && (
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h2 className="text-xl font-semibold mb-4 text-center">
+                🚫 Evitali 🚫
+              </h2>
+              <div className="space-y-4">
+                {badClients.map((client) => (
+                  <ClientCard
+                    key={client.id}
+                    client={client}
+                    onRate={() => handleOpenDialog(client)}
+                  />
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold mb-4 text-center">
+                ✨ Migliori clienti ✨
+              </h2>
+              <div className="space-y-4">
+                {goodClients.map((client) => (
+                  <ClientCard
+                    key={client.id}
+                    client={client}
+                    onRate={() => handleOpenDialog(client)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-          <div>
-            <h2 className="text-xl font-semibold mb-4 text-center">
-              🚫 Evitali 🚫
-            </h2>
-            <div className="space-y-4">
-              {badClients.map((client) => (
-                <ClientCard
-                  key={client.id}
-                  client={client}
-                  onRate={() => handleOpenDialog(client)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        )}
       </div>
 
       <RatingDialog

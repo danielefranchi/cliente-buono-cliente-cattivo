@@ -14,7 +14,7 @@ interface RatingDialogProps {
 }
 
 export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDialogProps) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(client ? 2 : 1);
   const [name, setName] = useState("");
   const [responseToQuote, setResponseToQuote] = useState<boolean | null>(null);
   const [payment, setPayment] = useState<"yes" | "no" | "late" | null>(null);
@@ -22,7 +22,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
   const { toast } = useToast();
 
   const reset = () => {
-    setStep(1);
+    setStep(client ? 2 : 1);
     setName("");
     setResponseToQuote(null);
     setPayment(null);
@@ -60,9 +60,9 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md backdrop-blur-md bg-white/80">
         <DialogHeader>
-          <DialogTitle>
+          <DialogTitle className="text-center">
             {step === 1 && !client && "Aggiungi cliente"}
             {step === 1 && client && client.name}
             {step === 2 && "Ha risposto al tuo preventivo?"}
@@ -76,7 +76,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
             <div
               key={i}
               className={`h-2 w-2 rounded-full ${
-                i === step ? "bg-primary" : "bg-gray-200"
+                i === step ? "bg-black" : "bg-gray-200"
               }`}
             />
           ))}
@@ -95,29 +95,25 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
             <div className="flex justify-center gap-4">
               <Button
                 variant={responseToQuote === false ? "destructive" : "outline"}
-                className="flex-1 h-24"
+                className="flex-1 h-24 flex-col"
                 onClick={() => {
                   setResponseToQuote(false);
                   setStep(4);
                 }}
               >
-                <div className="space-y-2">
-                  <span className="text-4xl">👻</span>
-                  <span>No</span>
-                </div>
+                <span className="text-4xl mb-2">👻</span>
+                <span>No</span>
               </Button>
               <Button
                 variant={responseToQuote === true ? "default" : "outline"}
-                className="flex-1 h-24"
+                className="flex-1 h-24 flex-col bg-black hover:bg-black/90"
                 onClick={() => {
                   setResponseToQuote(true);
                   setStep(3);
                 }}
               >
-                <div className="space-y-2">
-                  <span className="text-4xl">🎉</span>
-                  <span>Sì</span>
-                </div>
+                <span className="text-4xl mb-2">🎉</span>
+                <span>Sì</span>
               </Button>
             </div>
           )}
@@ -126,42 +122,36 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
             <div className="flex justify-center gap-4">
               <Button
                 variant={payment === "no" ? "destructive" : "outline"}
-                className="flex-1 h-24"
+                className="flex-1 h-24 flex-col"
                 onClick={() => {
                   setPayment("no");
                   setStep(4);
                 }}
               >
-                <div className="space-y-2">
-                  <span className="text-4xl">😠</span>
-                  <span>No</span>
-                </div>
+                <span className="text-4xl mb-2">😠</span>
+                <span>No</span>
               </Button>
               <Button
                 variant={payment === "late" ? "default" : "outline"}
-                className="flex-1 h-24"
+                className="flex-1 h-24 flex-col bg-black hover:bg-black/90"
                 onClick={() => {
                   setPayment("late");
                   setStep(4);
                 }}
               >
-                <div className="space-y-2">
-                  <span className="text-4xl">🐌</span>
-                  <span>Oltre 30 giorni</span>
-                </div>
+                <span className="text-4xl mb-2">🐌</span>
+                <span>Oltre 30 giorni</span>
               </Button>
               <Button
                 variant={payment === "yes" ? "default" : "outline"}
-                className="flex-1 h-24"
+                className="flex-1 h-24 flex-col bg-black hover:bg-black/90"
                 onClick={() => {
                   setPayment("yes");
                   setStep(4);
                 }}
               >
-                <div className="space-y-2">
-                  <span className="text-4xl">😊</span>
-                  <span>Sì</span>
-                </div>
+                <span className="text-4xl mb-2">😊</span>
+                <span>Sì</span>
               </Button>
             </div>
           )}
@@ -182,7 +172,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                 </label>
               </div>
               <Button
-                className="w-full"
+                className="w-full bg-black hover:bg-black/90"
                 disabled={!confirmed}
                 onClick={handleSubmit}
               >
@@ -193,7 +183,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
 
           {step === 1 && !client && (
             <Button
-              className="w-full"
+              className="w-full bg-black hover:bg-black/90"
               disabled={!name.trim()}
               onClick={() => setStep(2)}
             >

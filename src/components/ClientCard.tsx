@@ -59,7 +59,7 @@ export const ClientCard = ({ client, onRate }: ClientCardProps) => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button onClick={onRate} variant="outline" className="w-full">
+        <Button onClick={onRate} variant="outline" className="w-full bg-black hover:bg-black/90 text-white">
           Valuta
         </Button>
       </CardFooter>
