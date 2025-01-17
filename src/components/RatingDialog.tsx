@@ -60,9 +60,19 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md backdrop-blur-md bg-white/80">
+      <DialogContent className="sm:max-w-md bg-white">
         <DialogHeader>
-          <DialogTitle className="text-center">
+          <div className="flex justify-center space-x-2 mb-4">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className={`h-2 w-2 rounded-full ${
+                  i === step ? "bg-black" : "bg-gray-200"
+                }`}
+              />
+            ))}
+          </div>
+          <DialogTitle className="text-center mt-4">
             {step === 1 && !client && "Aggiungi cliente"}
             {step === 1 && client && client.name}
             {step === 2 && "Ha risposto al tuo preventivo?"}
@@ -70,17 +80,6 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
             {step === 4 && "Tutto vero?"}
           </DialogTitle>
         </DialogHeader>
-
-        <div className="flex justify-center space-x-2 mb-4">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className={`h-2 w-2 rounded-full ${
-                i === step ? "bg-black" : "bg-gray-200"
-              }`}
-            />
-          ))}
-        </div>
 
         <div className="p-4 space-y-4">
           {step === 1 && !client && (
@@ -101,7 +100,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                   setStep(4);
                 }}
               >
-                <span className="text-4xl mb-2">👻</span>
+                <span className="text-4xl">👻</span>
                 <span>No</span>
               </Button>
               <Button
@@ -112,7 +111,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                   setStep(3);
                 }}
               >
-                <span className="text-4xl mb-2">🎉</span>
+                <span className="text-4xl">🎉</span>
                 <span>Sì</span>
               </Button>
             </div>
@@ -128,7 +127,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                   setStep(4);
                 }}
               >
-                <span className="text-4xl mb-2">😠</span>
+                <span className="text-4xl">😠</span>
                 <span>No</span>
               </Button>
               <Button
@@ -139,7 +138,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                   setStep(4);
                 }}
               >
-                <span className="text-4xl mb-2">🐌</span>
+                <span className="text-4xl">🐌</span>
                 <span>Oltre 30 giorni</span>
               </Button>
               <Button
@@ -150,7 +149,7 @@ export const RatingDialog = ({ open, onOpenChange, client, onSubmit }: RatingDia
                   setStep(4);
                 }}
               >
-                <span className="text-4xl mb-2">😊</span>
+                <span className="text-4xl">😊</span>
                 <span>Sì</span>
               </Button>
             </div>

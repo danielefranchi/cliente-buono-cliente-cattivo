@@ -18,9 +18,9 @@ export const ClientCard = ({ client, onRate }: ClientCardProps) => {
 
   return (
     <Card className="w-full">
-      <CardHeader className="flex flex-row items-center gap-2">
-        <span className="text-2xl">🏢</span>
-        <div>
+      <CardHeader className="flex flex-col items-center gap-2">
+        <span className="text-4xl">🏢</span>
+        <div className="text-center">
           <h3 className="font-semibold">{client.name}</h3>
           <p className="text-sm text-gray-500">{ratings.length} valutazioni</p>
         </div>
@@ -36,8 +36,8 @@ export const ClientCard = ({ client, onRate }: ClientCardProps) => {
           </div>
           <div className="rating-bar">
             <div 
-              className="rating-progress rating-progress-good"
-              style={{ width: `${responseRate}%` }}
+              className={`rating-progress ${ratings.length > 0 ? (responseRate > 0 ? 'rating-progress-good' : 'rating-progress-bad') : ''}`}
+              style={{ width: `${responseRate || (ratings.length > 0 ? 10 : 0)}%` }}
             />
           </div>
         </div>
@@ -52,14 +52,14 @@ export const ClientCard = ({ client, onRate }: ClientCardProps) => {
           </div>
           <div className="rating-bar">
             <div 
-              className="rating-progress rating-progress-good"
-              style={{ width: `${paymentRate}%` }}
+              className={`rating-progress ${ratings.length > 0 ? (paymentRate > 0 ? 'rating-progress-good' : 'rating-progress-bad') : ''}`}
+              style={{ width: `${paymentRate || (ratings.length > 0 ? 10 : 0)}%` }}
             />
           </div>
         </div>
       </CardContent>
       <CardFooter>
-        <Button onClick={onRate} variant="outline" className="w-full bg-black hover:bg-black/90 text-white">
+        <Button onClick={onRate} variant="outline" className="w-auto px-8 bg-black hover:bg-black/90 text-white">
           Valuta
         </Button>
       </CardFooter>
