@@ -51,3 +51,7 @@
 .rating-progress-bad {
   @apply bg-destructive;
 }
+
+[data-state="open"] > .dialog-overlay {
+  @apply backdrop-blur-sm;
+}

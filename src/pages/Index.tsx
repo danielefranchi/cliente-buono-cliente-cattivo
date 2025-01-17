@@ -13,14 +13,6 @@ const Index = () => {
   const { clients, addClient, addRating, searchClients } = useClientStore();
 
   const filteredClients = searchClients(search);
-  const goodClients = filteredClients.filter((client) => {
-    const ratings = client.ratings;
-    if (ratings.length === 0) return false;
-    const goodRatings = ratings.filter(
-      (r) => r.responseToQuote && r.payment === "yes"
-    );
-    return goodRatings.length / ratings.length >= 0.5;
-  });
   const badClients = filteredClients.filter((client) => {
     const ratings = client.ratings;
     if (ratings.length === 0) return false;
@@ -28,6 +20,14 @@ const Index = () => {
       (r) => r.responseToQuote && r.payment === "yes"
     );
     return goodRatings.length / ratings.length < 0.5;
+  });
+  const goodClients = filteredClients.filter((client) => {
+    const ratings = client.ratings;
+    if (ratings.length === 0) return false;
+    const goodRatings = ratings.filter(
+      (r) => r.responseToQuote && r.payment === "yes"
+    );
+    return goodRatings.length / ratings.length >= 0.5;
   });
 
   const handleOpenDialog = (client?: Client) => {
@@ -67,12 +67,16 @@ const Index = () => {
             alt="Cliente buono/cattivo" 
             className="h-16 mx-auto mb-4"
           />
-          <h1 className="text-3xl font-bold mb-2 font-sans">
+          <h1 className="text-2xl font-bold mb-2 font-sans">
             Scopri se un cliente risponde al tuo preventivo
           </h1>
           <p className="text-gray-600 mb-8 text-xl font-sans">e se paga davvero.</p>
-          <SearchBar value={search} onChange={setSearch} />
+          <div className="max-w-xl mx-auto">
+            <SearchBar value={search} onChange={setSearch} />
+          </div>
         </div>
+
+        <div className="h-px bg-gray-200 my-12" />
 
         <div className="border-t border-gray-200 pt-8 mt-8">
           {search && filteredClients.length === 0 && (
@@ -81,7 +85,7 @@ const Index = () => {
                 {search} non è valutato!
               </h2>
               <p className="text-gray-600 mb-4">Bisogna aggiungerlo!</p>
-              <Button onClick={() => handleOpenDialog()} className="bg-black hover:bg-black/90">
+              <Button onClick={() => handleOpenDialog()} className="bg-black hover:bg-white hover:text-black text-white border-2 border-black transition-all">
                 Aggiungi cliente
               </Button>
             </div>
@@ -91,10 +95,10 @@ const Index = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h2 className="text-xl font-semibold mb-4 text-center">
-                  ✨ Migliori clienti ✨
+                  🚫 Evitali 🚫
                 </h2>
-                <div className="space-y-4">
-                  {goodClients.map((client) => (
+                <div className="space-y-12">
+                  {badClients.map((client) => (
                     <ClientCard
                       key={client.id}
                       client={client}
@@ -105,10 +109,10 @@ const Index = () => {
               </div>
               <div>
                 <h2 className="text-xl font-semibold mb-4 text-center">
-                  🚫 Evitali 🚫
+                  ✨ Migliori clienti ✨
                 </h2>
-                <div className="space-y-4">
-                  {badClients.map((client) => (
+                <div className="space-y-12">
+                  {goodClients.map((client) => (
                     <ClientCard
                       key={client.id}
                       client={client}

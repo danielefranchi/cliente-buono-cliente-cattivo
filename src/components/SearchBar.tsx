@@ -15,7 +15,7 @@ export const SearchBar = ({ value, onChange }: SearchBarProps) => {
         placeholder="Cerca nome azienda, progetto o cliente"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="pl-10"
+        className="pl-10 h-12"
       />
     </div>
   );
