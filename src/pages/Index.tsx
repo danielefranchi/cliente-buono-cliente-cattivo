@@ -42,13 +42,22 @@ const Index = () => {
   }) => {
     if (!selectedClient) {
       if (!data.name) return;
+      
+      // First add the client
       addClient(data.name);
-      const newClient = clients[clients.length - 1];
-      addRating(newClient.id, {
-        responseToQuote: data.responseToQuote,
-        payment: data.payment,
-      });
+      
+      // Get the newly created client from the store
+      const newClient = searchClients(data.name)[0];
+      
+      if (newClient) {
+        // Then add the rating to the new client
+        addRating(newClient.id, {
+          responseToQuote: data.responseToQuote,
+          payment: data.payment,
+        });
+      }
     } else {
+      // Add rating to existing client
       addRating(selectedClient.id, {
         responseToQuote: data.responseToQuote,
         payment: data.payment,
